@@ -14,9 +14,22 @@ end
 
 def draw
   #fill @r, @g, @b, @transparency
-  fill 255, 255, 0, @transparency
-  ellipse_mode CENTER
+  fill 255, 200, 0, @transparency
+  #ellipse_mode CENTER
   ellipse @cx, @cy, @w, @h
+  
+  # draw the circle
+  no_stroke
+  smooth
+  radius = @h/2
+  for deg in 0..360
+    angle = radians(deg)
+    x = @cx + (cos(angle) * radius)
+    y = @cy + (sin(angle) * radius)
+    ellipse x, y, 6, 6
+    #delay 1000
+  end
+  
   # first triangle
   point1x = (cos(radians(270))*@h/2) + @cx
   point1y = (sin(radians(270))*@h/2) + @cy
